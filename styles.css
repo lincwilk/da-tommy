@@ -35,3 +35,40 @@ img{max-width:100%}
 .event-copy .btn{margin-top:8px}
 .events-note{font-size:.9rem;margin-top:22px}
 @media(max-width:650px){.event-grid{grid-template-columns:1fr}.event-copy{padding:18px}.event-card>img{aspect-ratio:4/5;object-position:top}}
+
+/* Carosello eventi: una scheda alla volta, con controlli accessibili. */
+.event-slider{position:relative;margin-top:28px}
+.event-slide{display:none;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);align-items:stretch;max-width:940px;margin:0 auto}
+.event-slide.is-active{display:grid}
+.event-slide>img{width:100%;height:100%;min-height:380px;max-height:570px;object-fit:contain;background:#eee5d4}
+.event-copy{align-self:center;padding:clamp(20px,4vw,42px)}
+.slider-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:18px}
+.slider-arrow,.slider-dot,.slider-pause{font:inherit;cursor:pointer}
+.slider-arrow{width:42px;height:42px;border:1px solid var(--green);border-radius:50%;background:transparent;color:var(--green);font-size:1.2rem}
+.slider-dots{display:flex;gap:9px;align-items:center}
+.slider-dot{width:12px;height:12px;padding:0;border:1px solid var(--green);border-radius:50%;background:transparent}
+.slider-dot.is-active{background:var(--red);border-color:var(--red)}
+.slider-pause{border:0;background:transparent;color:var(--green);text-decoration:underline;padding:10px}
+.slider-arrow:focus-visible,.slider-dot:focus-visible,.slider-pause:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+/* Modale di richiesta prenotazione: WhatsApp invia una richiesta, non conferma il tavolo. */
+.booking-overlay[hidden]{display:none}
+.booking-overlay{position:fixed;inset:0;z-index:30;display:grid;place-items:center;padding:18px;background:rgba(10,25,18,.72);overflow-y:auto}
+.booking-dialog{position:relative;width:min(100%,520px);max-height:calc(100dvh - 36px);overflow-y:auto;padding:clamp(22px,5vw,36px);background:var(--paper);color:var(--ink);border-top:5px solid var(--red);box-shadow:0 20px 70px rgba(0,0,0,.25)}
+.booking-dialog h2{font-size:clamp(2rem,7vw,2.8rem);margin:8px 0 12px}
+.booking-dialog>p{margin:0 0 20px}
+.booking-close{position:absolute;right:12px;top:12px;width:42px;height:42px;border:1px solid var(--line);background:transparent;font-size:1.8rem;line-height:1;cursor:pointer;color:var(--green)}
+#booking-form{display:grid;gap:8px}
+#booking-form label{font-weight:700;font-size:.92rem;margin-top:6px}
+#booking-form input,#booking-form select,#booking-form textarea{width:100%;min-height:46px;border:1px solid #8c9489;border-radius:3px;padding:10px 12px;background:#fff;color:#1b1b1b;font:inherit}
+#booking-form textarea{resize:vertical}
+#booking-form .booking-submit{width:100%;justify-content:center;margin-top:12px;cursor:pointer;font:inherit;font-weight:700}
+.booking-error{color:#9f1c1c;font-weight:700;margin:4px 0}
+body.booking-open{overflow:hidden}
+@media(max-width:650px){
+ .event-slide.is-active{grid-template-columns:1fr}
+ .event-slide>img{min-height:0;max-height:none;aspect-ratio:4/3;object-fit:contain}
+ .event-copy{padding:20px}
+ .slider-controls{gap:10px;flex-wrap:wrap}
+ .booking-overlay{padding:10px;align-items:center}
+ .booking-dialog{max-height:calc(100dvh - 20px);padding:24px 18px}
+}
