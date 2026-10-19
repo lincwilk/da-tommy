@@ -63,3 +63,14 @@ body.booking-open{overflow:hidden}
  .booking-overlay{padding:10px;align-items:center}
  .booking-dialog{max-height:calc(100dvh - 20px);padding:24px 18px}
 }
+
+
+/* Selettore lingua: compatto, elegante e coerente con la palette del locale. */
+.header-tools{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.home-languages{display:inline-flex;align-items:center;gap:2px;padding:4px;border:1px solid rgba(230,216,187,.42);border-radius:999px;background:rgba(0,0,0,.12)}
+.home-languages button{appearance:none;min-width:34px;padding:7px 9px;border:0;border-radius:999px;background:transparent;color:#fdf7e9;font:700 .72rem/1 var(--sans);letter-spacing:.04em;cursor:pointer;transition:background .18s ease,color .18s ease,transform .18s ease}
+.home-languages button:hover{background:rgba(253,247,233,.12)}
+.home-languages button.active{background:#e6d8bb;color:#0f5132;box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.home-languages button:focus-visible{outline:2px solid #fdf7e9;outline-offset:3px}
+@media(max-width:850px){.header-tools{gap:8px}.home-languages{padding:3px}.home-languages button{min-width:30px;padding:7px 6px;font-size:.68rem}}
+@media(max-width:520px){.header-tools{gap:5px}.home-languages button{min-width:28px;padding:7px 5px}}
