@@ -15,15 +15,14 @@
 <div class="wrap">
 <div class="eyebrow" data-home-i18n="eventsEyebrow">Segna la data</div><h2 data-home-i18n="eventsTitle">Da Tommy succede qualcosa.</h2>
 <p class="events-intro" data-home-i18n="eventsIntro">Serate speciali e pizze del mese: scopri cosa c’è di nuovo e contattaci per informazioni.</p>
-<div class="event-slider" aria-roledescription="carosello" aria-label="Eventi e novità Da Tommy"><div class="event-track">
-<article class="event-card event-slide is-active" data-slide="0" aria-hidden="false">
+<div class="event-grid">
+<article class="event-card">
 <img src="evento-cena-cacciatore.jpeg" alt="Locandina della Cena del Cacciatore del 30 ottobre da Da Tommy a Torre Pellice" width="700" height="1200" loading="lazy" decoding="async">
 <div class="event-copy"><span class="event-date">30 OTTOBRE</span><h3>Cena del Cacciatore</h3><p>Aperitivo, antipasto, primo, secondo, dolce e bevande incluse.</p><p class="event-price">€ 45 a persona</p><a class="btn" href="#prenota">Prenota su WhatsApp ↗</a></div></article>
-<article class="event-card event-slide" data-slide="1" aria-hidden="true" inert>
+<article class="event-card">
 <img src="pizza-del-mese-diabolica.jpeg" alt="Locandina della pizza del mese Diabolica, ottobre e novembre" width="700" height="1200" loading="lazy" decoding="async">
 <div class="event-copy"><span class="event-date">OTTOBRE · NOVEMBRE</span><h3>Pizza del mese: Diabolica</h3><p>Datterino giallo, spianata piccante, ’nduja, olive nere e ciuffi di mozzarella di bufala a crudo.</p><p class="event-price">€ 12</p><a class="btn alt" href="menu.html">Scopri il menu ↗</a></div></article>
-</div></div>
-<div class="slider-controls"><button type="button" class="slider-arrow" id="event-prev" aria-label="Mostra il contenuto precedente">←</button><div class="slider-dots"><button type="button" class="slider-dot is-active" data-go="0" aria-label="Mostra Cena del Cacciatore" aria-pressed="true"></button><button type="button" class="slider-dot" data-go="1" aria-label="Mostra Pizza del mese Diabolica" aria-pressed="false"></button></div><button type="button" class="slider-arrow" id="event-next" aria-label="Mostra il contenuto successivo">→</button><button type="button" id="event-pause" class="slider-pause" aria-pressed="false">Pausa</button></div>
+</div>
 <p class="events-note">Gli appuntamenti possono variare: contattaci per confermare disponibilità e prenotazioni.</p>
 </div></section>
 <div class="stripe"><div class="wrap"><span>Pizza & cucina</span><span>Sapori italiani</span><span>Atmosfera alla mano</span><span>Torre Pellice</span></div></div>
@@ -54,11 +53,4 @@ fr:{navAbout:'Le restaurant',navMenu:'La carte',navGallery:'Nos spécialités',n
 function setHomeLanguage(lang){document.documentElement.lang=lang;document.querySelectorAll('[data-home-i18n]').forEach(el=>{const value=homeTranslations[lang][el.dataset.homeI18n];if(value)el.innerHTML=value});document.querySelectorAll('[data-home-lang]').forEach(b=>{b.classList.toggle('active',b.dataset.homeLang===lang);b.setAttribute('aria-pressed',String(b.dataset.homeLang===lang))});try{localStorage.setItem('daTommyLang',lang)}catch(e){}}
 document.querySelectorAll('[data-home-lang]').forEach(b=>b.addEventListener('click',()=>setHomeLanguage(b.dataset.homeLang)));
 try{const saved=localStorage.getItem('daTommyLang');if(saved&&homeTranslations[saved])setHomeLanguage(saved)}catch(e){}
-// Carosello: cambio automatico ogni 5 secondi, controlli manuali e pausa.
-const slider=document.querySelector('.event-slider'),track=document.querySelector('.event-track'),slides=[...document.querySelectorAll('.event-slide')],dots=[...document.querySelectorAll('.slider-dot')],pauseBtn=document.getElementById('event-pause');let current=0,paused=window.matchMedia('(prefers-reduced-motion: reduce)').matches,touchStartX=0,touchStartY=0;
-slides.forEach((s,i)=>{s.classList.toggle('is-active',i===0);s.setAttribute('aria-hidden',String(i!==0));s.inert=i!==0});
-function showSlide(n){current=(n+slides.length)%slides.length;slides.forEach((s,i)=>{const active=i===current;s.classList.toggle('is-active',active);s.setAttribute('aria-hidden',String(!active));s.inert=!active});dots.forEach((d,i)=>{d.classList.toggle('is-active',i===current);d.setAttribute('aria-pressed',String(i===current))})}
-document.getElementById('event-prev').addEventListener('click',()=>showSlide(current-1));document.getElementById('event-next').addEventListener('click',()=>showSlide(current+1));dots.forEach(d=>d.addEventListener('click',()=>showSlide(Number(d.dataset.go))));
-slider.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].clientX;touchStartY=e.changedTouches[0].clientY},{passive:true});slider.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-touchStartX,dy=e.changedTouches[0].clientY-touchStartY;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.25)showSlide(current+(dx<0?1:-1))},{passive:true});
-pauseBtn.setAttribute('aria-pressed',String(paused));pauseBtn.textContent=paused?'Riprendi':'Pausa';pauseBtn.addEventListener('click',()=>{paused=!paused;pauseBtn.setAttribute('aria-pressed',String(paused));pauseBtn.textContent=paused?'Riprendi':'Pausa'});if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(()=>{if(!paused&&!document.hidden)showSlide(current+1)},5000);
 </script></body></html>
