@@ -36,18 +36,21 @@ img{max-width:100%}
 .events-note{font-size:.9rem;margin-top:22px}
 @media(max-width:650px){.event-grid{grid-template-columns:1fr}.event-copy{padding:18px}.event-card>img{aspect-ratio:4/5;object-position:top}}
 
-/* Carosello eventi: una scheda alla volta, con controlli accessibili. */
-.event-slider{position:relative;margin-top:28px}
-.event-slide{display:none;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);align-items:stretch;max-width:940px;margin:0 auto}
-.event-slide.is-active{display:grid}
-.event-slide>img{width:100%;height:100%;min-height:380px;max-height:570px;object-fit:contain;background:#eee5d4}
-.event-copy{align-self:center;padding:clamp(20px,4vw,42px)}
-.slider-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:18px}
+/* Carosello eventi: scorrimento fluido, swipe touch e schede più compatte. */
+.event-slider{display:flex;position:relative;margin-top:28px;overflow:hidden;align-items:stretch;touch-action:pan-y;will-change:transform;transition:transform .48s cubic-bezier(.22,.75,.25,1)}
+@media(prefers-reduced-motion:reduce){.event-slider{transition:none}}
+.event-slide{display:grid;flex:0 0 100%;grid-template-columns:minmax(0,.85fr) minmax(0,1fr);align-items:stretch;max-width:940px;margin:0 auto;background:#fff;border:1px solid var(--line);box-shadow:0 12px 30px rgba(15,55,38,.09);overflow:hidden}
+.event-slide>img{display:block;width:100%;height:100%;min-height:350px;max-height:490px;object-fit:contain;background:#eee5d4}
+.event-copy{align-self:center;padding:clamp(20px,3vw,38px)}
+.event-copy h3{font-size:clamp(1.5rem,3vw,2.2rem)}
+.event-copy p{margin:.65em 0}
+.slider-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:20px}
 .slider-arrow,.slider-dot,.slider-pause{font:inherit;cursor:pointer}
-.slider-arrow{width:42px;height:42px;border:1px solid var(--green);border-radius:50%;background:transparent;color:var(--green);font-size:1.2rem}
+.slider-arrow{width:42px;height:42px;border:1px solid var(--green);border-radius:50%;background:transparent;color:var(--green);font-size:1.2rem;transition:background .2s,color .2s}
+.slider-arrow:hover{background:var(--green);color:white}
 .slider-dots{display:flex;gap:9px;align-items:center}
-.slider-dot{width:12px;height:12px;padding:0;border:1px solid var(--green);border-radius:50%;background:transparent}
-.slider-dot.is-active{background:var(--red);border-color:var(--red)}
+.slider-dot{width:10px;height:10px;padding:0;border:1px solid var(--green);border-radius:50%;background:transparent;transition:transform .2s,background .2s}
+.slider-dot.is-active{background:var(--red);border-color:var(--red);transform:scale(1.2)}
 .slider-pause{border:0;background:transparent;color:var(--green);text-decoration:underline;padding:10px}
 .slider-arrow:focus-visible,.slider-dot:focus-visible,.slider-pause:focus-visible{outline:3px solid var(--red);outline-offset:3px}
 /* Modale di richiesta prenotazione: WhatsApp invia una richiesta, non conferma il tavolo. */
@@ -65,9 +68,13 @@ img{max-width:100%}
 .booking-error{color:#9f1c1c;font-weight:700;margin:4px 0}
 body.booking-open{overflow:hidden}
 @media(max-width:650px){
- .event-slide.is-active{grid-template-columns:1fr}
- .event-slide>img{min-height:0;max-height:none;aspect-ratio:4/3;object-fit:contain}
- .event-copy{padding:20px}
+ .event-slide{grid-template-columns:minmax(0,.78fr) minmax(0,1fr);min-height:300px}
+ .event-slide>img{min-height:300px;max-height:none;height:100%;aspect-ratio:auto;object-fit:contain}
+ .event-copy{padding:16px 14px}
+ .event-copy h3{font-size:1.35rem}
+ .event-copy p{font-size:.92rem;line-height:1.45}
+ .event-copy .btn{padding:10px 12px;font-size:.85rem}
+ .event-date{font-size:.7rem}
  .slider-controls{gap:10px;flex-wrap:wrap}
  .booking-overlay{padding:10px;align-items:center}
  .booking-dialog{max-height:calc(100dvh - 20px);padding:24px 18px}
