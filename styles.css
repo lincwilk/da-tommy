@@ -15,3 +15,8 @@ img{max-width:100%}
 @media(max-width:850px){.map-wrap iframe{height:280px}.testimonials .cards{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.map-wrap iframe{height:250px}.testimonials .cards{grid-template-columns:1fr}.info{padding:20px}.menu-contact .btn{width:100%;justify-content:center}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+
+/* Botões usados também na página do menu. */
+.menu-contact .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;background:var(--red);color:#fff;border:1px solid var(--red);font-weight:700;border-radius:3px}
+.menu-contact .btn.alt{background:transparent;color:var(--green);border-color:var(--green)}
+.menu-contact a:focus-visible{outline-color:#f2c66d}
