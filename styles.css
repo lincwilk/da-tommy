@@ -58,3 +58,6 @@ body.booking-open{overflow:hidden}
 @media(max-width:520px){.header-tools{gap:5px}.home-languages button{min-width:28px;padding:7px 5px}}
 
 
+
+/* Informazioni complete nel footer */
+.foot-info{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:18px;padding-top:18px;border-top:1px solid rgba(253,247,233,.25);font-size:.82rem;color:#fdf7e9}.foot-info a{text-decoration:underline;text-underline-offset:3px}.foot-info span{color:#e0e8e1}.google-review-link{font-size:.85rem;margin-top:22px}.google-review-link a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
