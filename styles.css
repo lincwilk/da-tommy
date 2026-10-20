@@ -61,3 +61,19 @@ body.booking-open{overflow:hidden}
 
 /* Informazioni complete nel footer */
 .foot-info{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:18px;padding-top:18px;border-top:1px solid rgba(253,247,233,.25);font-size:.82rem;color:#fdf7e9}.foot-info a{text-decoration:underline;text-underline-offset:3px}.foot-info span{color:#e0e8e1}.google-review-link{font-size:.85rem;margin-top:22px}.google-review-link a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+
+
+/* Da Tommy: barra rapida mobile, griglia galleria e header responsive */
+.brand small{display:block;font:700 .58rem var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#e6d8bb;margin-top:5px}
+.header-booking{white-space:nowrap;flex-shrink:0;padding:10px 15px;min-height:44px}
+@media(min-width:851px){.header-booking{display:inline-flex}.nav{gap:clamp(10px,1.5vw,20px)}.links{gap:clamp(12px,1.7vw,24px);white-space:nowrap}.brand{flex-shrink:0}}
+@media(max-width:850px){.header-booking{display:none}}
+#gallery .gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,18vw,230px);gap:12px}
+#gallery .photo{grid-row:auto!important;grid-column:auto!important;min-width:0;min-height:0}
+#gallery .photo img{display:block;width:100%;height:100%;object-fit:cover}
+#gallery .photo figcaption{font-size:clamp(.82rem,1vw,1rem);overflow-wrap:anywhere}
+#eventi .event-card[hidden],#eventi[hidden],.links a[hidden]{display:none!important}
+#eventi .event-booking-required{font-weight:800;color:var(--red);font-size:.94rem}
+.mobile-action-bar{display:none}
+@media(max-width:850px){body{padding-bottom:calc(70px + env(safe-area-inset-bottom,0px))}.mobile-action-bar{position:fixed;z-index:20;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));background:var(--cream);border-top:1px solid var(--line);box-shadow:0 -5px 20px rgba(15,81,50,.12)}.mobile-action{display:flex;align-items:center;justify-content:center;gap:7px;min-height:48px;padding:7px 4px;border-radius:6px;background:var(--green);color:var(--cream);font-weight:700;font-size:.83rem;line-height:1.1;text-align:center}.mobile-action svg{width:20px;height:20px;flex:0 0 20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.mobile-action:focus-visible{outline:3px solid var(--red);outline-offset:2px}body.booking-open .mobile-action-bar{display:none}body.booking-open{padding-bottom:0}#gallery .gallery{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:clamp(145px,42vw,220px);gap:8px}#gallery .photo figcaption{padding:24px 10px 10px;font-size:.84rem}}
+@media(max-width:390px){.mobile-action{gap:4px;font-size:.76rem}.mobile-action svg{width:18px;height:18px;flex-basis:18px}.mobile-action-bar{padding-left:7px;padding-right:7px}}
