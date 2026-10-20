@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lincwilk.github.io/da-tommy/sitemap.xml
